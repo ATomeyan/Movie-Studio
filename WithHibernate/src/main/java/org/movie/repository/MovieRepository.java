@@ -14,6 +14,7 @@ import java.util.Optional;
 public class MovieRepository {
 
     private final EntityManager entityManager;
+    private EntityTransaction transaction;
 
     public MovieRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -40,7 +41,6 @@ public class MovieRepository {
     }
 
     public Movie save(Movie movie) {
-        EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();
@@ -61,7 +61,6 @@ public class MovieRepository {
     }
 
     public void remove(Integer id) {
-        EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();

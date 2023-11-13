@@ -15,6 +15,7 @@ import java.util.Optional;
 public class ActorRepository {
 
     private final EntityManager entityManager;
+    private EntityTransaction transaction;
 
     public ActorRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -39,7 +40,6 @@ public class ActorRepository {
     }
 
     public Actor save(Actor actor) {
-        EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();

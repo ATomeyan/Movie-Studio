@@ -14,6 +14,7 @@ import java.util.Optional;
 public class GenreRepository {
 
     private final EntityManager entityManager;
+    private EntityTransaction transaction;
 
     public GenreRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -34,7 +35,6 @@ public class GenreRepository {
     }
 
     public Genre save(Genre genre) {
-        EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();
@@ -55,8 +55,6 @@ public class GenreRepository {
     }
 
     public void delete(Integer id) {
-
-        EntityTransaction transaction = null;
 
         try {
             transaction = entityManager.getTransaction();
